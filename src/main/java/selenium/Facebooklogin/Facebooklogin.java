@@ -1,4 +1,4 @@
-package selenium.party;
+package selenium.Facebooklogin;
 
 
 import org.openqa.selenium.By;
@@ -7,12 +7,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by jwiczkowski on 17.08.16.
  */
-public class facebook
+public class Facebooklogin
 {
 
 
@@ -52,37 +51,26 @@ public class facebook
         String jahr = Geburtstag.next();
 
 
+       WebDriver driver = new FirefoxDriver();
+        driver.get("https://www.facebook.com");
+        driver.manage().window().maximize();
 
+        driver.findElement(By.xpath(".//*[@id='u_0_1']")).sendKeys(vornahme);
+        driver.findElement(By.xpath("//*[@id=\"u_0_5\"]")).sendKeys(emaihl);
+        driver.findElement(By.xpath("//*[@id=\"u_0_8\"]")).sendKeys(emaihl);
+        driver.findElement(By.xpath("//*[@id=\"u_0_a\"]")).sendKeys(passwortht);
 
-       WebDriver disco = new FirefoxDriver();
-        disco.get("https://www.facebook.com");
-        disco.manage().window().maximize();
-
-        disco.findElement(By.xpath(".//*[@id='u_0_1']")).sendKeys(vornahme);
-        disco.findElement(By.xpath("//*[@id=\"u_0_3\"]")).sendKeys(nachnahme);
-        disco.findElement(By.xpath("//*[@id=\"u_0_5\"]")).sendKeys(emaihl);
-        disco.findElement(By.xpath("//*[@id=\"u_0_8\"]")).sendKeys(emaihl);
-        disco.findElement(By.xpath("//*[@id=\"u_0_a\"]")).sendKeys(passwortht);
-
-        Select sel1= new Select(disco.findElement(By.xpath("//*[@id=\"day\"]")));
+        Select sel1= new Select(driver.findElement(By.xpath("//*[@id=\"day\"]")));
         sel1.selectByVisibleText(tag);
 
-        Select sel2= new Select(disco.findElement(By.xpath("//*[@id=\"month\"]")));
+        Select sel2= new Select(driver.findElement(By.xpath("//*[@id=\"month\"]")));
         sel2.selectByVisibleText(monat);
 
-        Select sel3= new Select(disco.findElement(By.xpath("//*[@id=\"year\"]")));
+        Select sel3= new Select(driver.findElement(By.xpath("//*[@id=\"year\"]")));
         sel3.selectByVisibleText(jahr);
 
-        disco.findElement(By.xpath("//*[@id=\"u_0_e\"]")).click();
-        disco.findElement(By.xpath("//*[@id=\"u_0_i\"]")).click();
-
-
-
-
+        driver.findElement(By.xpath("//*[@id=\"u_0_e\"]")).click();
+        driver.findElement(By.xpath("//*[@id=\"u_0_i\"]")).click();
 
     }
-
-
-
-
 }
